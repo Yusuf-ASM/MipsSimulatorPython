@@ -5,7 +5,6 @@ fileName = "a.asm"
 source = open(fileName, 'r')
 current = 0
 instruction = list(map(lambda x: x.strip(), source.readlines()))
-jumps = {}
 
 # Index of jumps
 for i in range(len(instruction)):
@@ -26,31 +25,38 @@ def Execute(ins):
     fun = ins[:tmp]
     var = ins[tmp + 1:].split(',')
     opcode = supported[fun]
+
     if opcode == 1:
         return jumps[var[0]]
 
     elif opcode == 2:
         p0 = var[0]
         p1 = var[1]
-        returnend = {}
-        exec(f"r = {fun[0].upper() + fun[1:]}('{p0}','{p1}')", globals(), returnend)
-        if returnend["r"] != -1:
-            return (jumps[returnend["r"]])
+        r = {}
+        exec(f"r = {fun[0].upper() + fun[1:]}('{p0}','{p1}')",globals(),r)
+        print(r['r'])
+        return r['r']
 
     elif opcode == 3:
         p0 = var[0]
         p1 = var[1]
         p2 = var[2]
-        returnend = {}
-        exec(f"r = {fun[0].upper() + fun[1:]}('{p0}','{p1}','{p2}')", globals(), returnend)
-        if returnend["r"] != -1:
-            return (jumps[returnend["r"]])
+        exec(f"{fun[0].upper() + fun[1:]}('{p0}','{p1}','{p2}')")
 
     elif opcode == 4:
         p0 = var[0]
         p1 = var[1]
         p2 = var[2]
         exec(f"{fun[0].upper() + fun[1:]}('{p0}','{p1}',{p2})")
+
+    elif opcode == 5:
+        p0 = var[0]
+        p1 = var[1]
+        p2 = var[2]
+        r = {}
+        exec(f"r = {fun[0].upper() + fun[1:]}('{p0}','{p1}','{p2}')")
+        return r['r']
+
     return -1
 
 

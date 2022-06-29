@@ -1,5 +1,5 @@
-addi $s0,$0,5
-addi $s1,$s1,5
+addi $s0,$0,-5
+addi $s1,$0,5
 bgtz $s0,potato
 j end
 end:

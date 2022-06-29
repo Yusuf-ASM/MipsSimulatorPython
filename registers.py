@@ -51,16 +51,19 @@ supported = {
     "and": 3,
     "sub": 3,
     "add": 3,
-    "alt": 3,
-    "beq": 3,
+    "slt": 3,
     "addi": 4,
-    "alti": 4,
+    "slti": 4,
     "andi": 4,
     "ori": 4,
     "xori": 4,
+    "beq": 5,
+    "bne": 5,
 }
 
 registersList = [0] * 32
+
+jumps = {}
 
 def displayRegisters():
     for key in registers:
