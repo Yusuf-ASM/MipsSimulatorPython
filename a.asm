@@ -1,10 +1,8 @@
-addi $s0,$0,-5
-addi $s1,$0,5
-bgtz $s0,potato
+ddi $s0,$0,-5
+addi $s1,$05,5
+bgtz $s0,add2
 j end
 end:
 addi $s2,$0,20
-
-potato:
+add2:
 addi $s3,$0,10
-

@@ -60,7 +60,24 @@ supported = {
     "beq": 5,
     "bne": 5,
 }
-
+inputs = {
+    "j" : 1,
+    "blez": 2,
+    "bgtz": 2,
+    "xor": 3,
+    "or": 3,
+    "and": 3,
+    "sub": 3,
+    "add": 3,
+    "slt": 3,
+    "addi": 4,
+    "slti": 4,
+    "andi": 4,
+    "ori": 4,
+    "xori": 4,
+    "beq": 3,
+    "bne": 3,
+}
 registersList = [0] * 32
 
 jumps = {}

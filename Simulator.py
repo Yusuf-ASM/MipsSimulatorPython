@@ -4,7 +4,7 @@ from Itype import *
 fileName = "a.asm"
 source = open(fileName, 'r')
 current = 0
-instruction = list(map(lambda x: x.strip(), source.readlines()))
+instruction = list(map(lambda x: x.strip().lower(), source.readlines()))
 
 # Index of jumps
 for i in range(len(instruction)):
@@ -34,7 +34,6 @@ def Execute(ins):
         p1 = var[1]
         r = {}
         exec(f"r = {fun[0].upper() + fun[1:]}('{p0}','{p1}')",globals(),r)
-        print(r['r'])
         return r['r']
 
     elif opcode == 3:
